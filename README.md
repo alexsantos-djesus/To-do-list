@@ -28,7 +28,7 @@ Um aplicativo simples de lista de tarefas (To-Do List) criado com **HTML**, **CS
 3. Abra o arquivo index.html em um navegador de sua preferência:
 
 ## 📋 Estrutura do Projeto
-    ```bash
+    
     📂 To-Do List App
     ├── 📂 img
     │   ├── checked.png    # Ícone para marcar tarefa como concluída
