@@ -43,17 +43,17 @@ Um aplicativo simples de lista de tarefas (To-Do List) criado com **HTML**, **CS
   - Design Responsivo: O aplicativo funciona perfeitamente em dispositivos móveis.
   - Interatividade Simples: Clique em um ícone para concluir ou excluir tarefas.
 
-##📝 Melhorias Futuras
+## 📝 Melhorias Futuras
 
   - Adicionar funcionalidade de edição de tarefas.
   - Implementar filtros (exibir todas, concluídas, pendentes).
   - Exportar tarefas como arquivo.
 
-##🧑‍💻 Contribuição
+## 🧑‍💻 Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar um **pull request**.
 
-##📄 Licença
+## 📄 Licença
 
 Este projeto é de uso livre e está disponível sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
 
