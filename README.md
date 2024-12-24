@@ -29,7 +29,7 @@ Um aplicativo simples de lista de tarefas (To-Do List) criado com **HTML**, **CS
 
 ## 📋 Estrutura do Projeto
     
-    📂 To-Do List App
+    📂 To-Do List Web
     ├── 📂 img
     │   ├── checked.png    # Ícone para marcar tarefa como concluída
     │   ├── trash.png      # Ícone para remover tarefa
