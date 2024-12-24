@@ -1,4 +1,4 @@
-# To-Do List App
+# To-Do List Web
 
 Um aplicativo simples de lista de tarefas (To-Do List) criado com **HTML**, **CSS** e **JavaScript**. O projeto utiliza armazenamento local (Local Storage) para salvar as tarefas, garantindo que elas permaneçam disponíveis mesmo ao recarregar a página.
 
