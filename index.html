@@ -1,26 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <title>To do list</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List — PHP + JSON (Dono por item)</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div class="container">
-        <input class="input-task" placeholder="O que tenho que fazer...">
-        <button class="button-add-task">Adicionar</button>
-
-        <ul class="list-tasks">
-
-        </ul>
+  <!-- Login simples (sem senha) -->
+  <div class="login-card" id="loginCard">
+    <h1>Entrar</h1>
+    <div class="login-row">
+      <input id="userInput" type="text" placeholder="Seu usuário">
+      <button id="btnLogin" class="button-add-task">Entrar</button>
     </div>
+  </div>
+
+  <!-- App -->
+  <div class="container" id="app" style="display:none;">
+    <div class="conteudo">
+      <h1>To-Do List</h1>
+      <div class="toolbar">
+        <span class="user-badge">Usuário: <strong id="who"></strong></span>
+        <div class="view-buttons">
+          <button id="btnViewAll" class="ghost small">Todos</button>
+          <button id="btnViewMine" class="ghost small">Minha Tabela</button>
+          <button id="btnCreateTable" class="ghost small">Criar minha tabela</button>
+          <button id="btnLogout" class="ghost small">Sair</button>
+        </div>
+      </div>
+      <div class="input-row">
+        <input class="input-task" placeholder="O que você precisa fazer?">
+        <button id="btnAdd" class="button-add-task">Adicionar</button>
+      </div>
+      <ul class="list-tasks"></ul>
+    </div>
+  </div>
+
+  <!-- Modal: permissão negada -->
+  <div id="modal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <h2>Permissão negada</h2>
+      <p>Você tentou alterar um item que <strong>não é seu</strong>.</p>
+      <p class="hint">Crie sua <strong>tabela</strong> (arquivo JSON do seu usuário) para ter um espaço só seu.</p>
+      <div class="modal-actions">
+        <button id="btnCloseModal" class="ghost">Cancelar</button>
+        <button id="btnModalCreate" class="button-add-task">Criar minha tabela</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
-<script src="scripts.js"></script>
 </html>

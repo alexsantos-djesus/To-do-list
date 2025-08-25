@@ -1,131 +1,28 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    outline: none;
-}
-
-body {
-    background: url("./img/background.png");
-    background-size: cover; /* Ajusta a imagem para preencher o fundo */
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px; /* Para evitar cortes em dispositivos pequenos */
-}
-
-.container {
-    background-color: #d1d1d1;
-    width: 100%; /* Para telas pequenas */
-    max-width: 500px; /* Limita em telas maiores */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.input-task {
-    border: none;
-    border-radius: 5px;
-    width: calc(100% - 130px); /* Espaço ajustado para o botão */
-    height: 40px;
-    padding-left: 10px;
-}
-
-.button-add-task {
-    border: none;
-    border-radius: 5px;
-    height: 40px;
-    background-color: #003329;
-    color: #ffffff;
-    font-size: 17px;
-    padding: 0 15px;
-    cursor: pointer;
-    font-weight: 700;
-}
-
-.button-add-task:hover {
-    opacity: 0.8;
-}
-
-.button-add-task:active {
-    opacity: 0.6;
-}
-
-.list-tasks {
-    width: 100%;
-    list-style: none;
-    margin-top: 30px;
-}
-
-.task {
-    background-color: #F2F2F2;
-    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-img {
-    height: 25px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.task:hover img {
-    opacity: 1;
-}
-
-.done {
-    background-color: #8fac55;
-    text-decoration: line-through;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        margin: 50px auto; /* Ajusta o espaçamento superior */
-        padding: 15px;
-    }
-
-    .input-task {
-        width: calc(100% - 110px); /* Ajuste para dispositivos menores */
-    }
-
-    .button-add-task {
-        font-size: 15px;
-        height: 38px;
-        padding: 0 10px;
-    }
-
-    .task {
-        font-size: 14px; /* Texto menor para tarefas */
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        margin: 20px auto;
-    }
-
-    .input-task {
-        width: calc(100% - 100px);
-    }
-
-    .button-add-task {
-        font-size: 14px;
-        height: 36px;
-        padding: 0 8px;
-    }
-
-    .task {
-        font-size: 12px;
-    }
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif}
+body{background:url('./img/background.png');background-size:cover;background-position:center;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:24px}
+.container{background:#ffffff;opacity:.95;box-shadow:0 12px 30px rgba(0,0,0,.25);border-radius:10px;width:100%;max-width:700px}
+.conteudo{padding:20px}
+h1{font-size:22px;margin-bottom:10px}
+.input-row{display:flex;gap:8px;margin:12px 0}
+.input-task{flex:1;border:1px solid #cfd8dc;padding:12px;border-radius:8px}
+.button-add-task{background:#2ecc71;border:none;color:white;padding:12px 16px;border-radius:8px;cursor:pointer}
+.button-add-task:hover{filter:brightness(1.05)}
+.ghost{background:transparent;border:1px solid #9fb0c7;color:#2c3e50;padding:8px 12px;border-radius:8px;cursor:pointer}
+.ghost.small{padding:6px 10px;font-size:12px;border-radius:6px}
+.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.user-badge{font-size:14px;color:#37474f}
+.list-tasks{list-style:none;margin-top:10px}
+.task{background:#f5f7fa;border:1px solid #e1e8ee;border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.task.done p{text-decoration:line-through;opacity:.7}
+.task img{width:28px;height:28px;cursor:pointer}
+.task .owner{display:block;font-size:12px;color:#607d8b;margin-top:2px}
+.login-card{background:rgba(255,255,255,.9);border-radius:10px;padding:16px;max-width:520px;width:100%;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.login-row{display:flex;gap:8px;margin-top:8px}
+#userInput{flex:1;border:1px solid #cfd8dc;border-radius:8px;padding:10px 12px}
+.help{color:#37474f;opacity:.9;font-size:14px;margin-top:6px}
+/* Modal */ 
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:9999}
+.modal-card{width:100%;max-width:520px;background:#ffffff;border-radius:10px;padding:16px;color:#111}
+.modal-card .hint{background:#eef2ff;border:1px dashed #93c5fd;color:#1e3a8a;padding:10px;border-radius:8px;margin:8px 0}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+.readonly-badge{font-size:12px;padding:4px 8px;border:1px solid #b0bec5;border-radius:8px;color:#607d8b}
