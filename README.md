@@ -1,19 +1,35 @@
 # To-Do List Web
 
-Um aplicativo simples de lista de tarefas (To-Do List) criado com **HTML**, **CSS** e **JavaScript**. O projeto utiliza armazenamento local (Local Storage) para salvar as tarefas, garantindo que elas permaneçam disponíveis mesmo ao recarregar a página.
+Aplicativo simples de lista de tarefas com **HTML**, **CSS** e **JavaScript** no front, e **PHP + JSON (sem banco)** no back.  
+Cada tarefa tem **dono** e **apenas o dono pode alterar/excluir**. Qualquer pessoa pode **ver** todas as tarefas na visão **“Todos”**.
+
+> **Versão atual:** `v1.2.0`  
+> **Novidades:** Horário opcional por tarefa (`HH:MM`) e **toggle de ordenação** (Hora ↔ Criação).
+
+---
 
 ## 🎯 Funcionalidades
 
-- Adicionar novas tarefas à lista.
+- Adicionar novas tarefas.
 - Marcar tarefas como concluídas.
-- Remover tarefas da lista.
-- Salvar automaticamente as tarefas no Local Storage.
+- Remover tarefas.
+- **Dono por item:** só quem criou pode alterar/excluir (validação no servidor).
+- **Visões:**  
+  - **Todos** — agrega as tarefas de todos os usuários.  
+  - **Minha Tabela** — somente suas tarefas.
+- **Horário opcional:** informe `HH:MM` ao adicionar (se vazio, segue normal).
+- **Ordenação configurável:** botão “**Ordenar: Hora/Criação**” (salva preferência na sessão).
+- **Sem banco de dados:** persistência em **arquivos JSON** por usuário.
+
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5**: Estrutura da página.
-- **CSS3**: Estilização e design responsivo.
-- **JavaScript (ES6)**: Lógica do aplicativo, manipulação do DOM e integração com o Local Storage.
+- **Frontend:** HTML5, CSS3, JavaScript (ES6).
+- **Backend:** PHP (7+ recomendado) lendo/escrevendo JSON.
+- **Armazenamento:** arquivos em `data/users/<usuario>.json`.
+
+---
 
 ## 🚀 Como Executar o Projeto
 
@@ -25,41 +41,100 @@ Um aplicativo simples de lista de tarefas (To-Do List) criado com **HTML**, **CS
    ```bash
    cd to-do-list
 
-3. Abra o arquivo index.html em um navegador de sua preferência:
+3. Inicie um servidor PHP simples na raiz do projeto:
+
+         php -S localhost:8000
+
+4. Acesse: `http://localhost:8000/index.html`
+
+         Se preferir rodar sem PHP (somente estático), as ações de adicionar/editar/excluir não funcionarão, pois agora são feitas via API PHP.
+
+---
 
 ## 📋 Estrutura do Projeto
     
     📂 To-Do List Web
-    ├── 📂 img
-    │   ├── checked.png    # Ícone para marcar tarefa como concluída
-    │   ├── trash.png      # Ícone para remover tarefa
-    │   ├── background.png # Imagem de fundo
-    ├── 📜 index.html     # Estrutura do aplicativo
-    ├── 📜 styles.css     # Estilos e design
-    ├── 📜 scripts.js     # Lógica e interatividade
+      ├── 📂 api
+      │   ├── add.php
+      │   ├── create_table.php
+      │   ├── delete.php
+      │   ├── lib.php
+      │   ├── list.php
+      │   ├── login.php
+      │   ├── logout.php
+      │   └── whoami.php
+      ├── 📂 data
+      │   ├── 📂 sessions   # sessão do PHP (fallback)
+      │   └── 📂 users      # arquivos .json por usuário
+      ├── 📂 img
+      │   ├── checked.png
+      │   ├── trash.png
+      │   └── background.png
+      ├── app.js
+      ├── index.html
+      ├── styles.css
+      └── favicon.ico (opcional)
 
-## 🌟 Recursos Adicionais
+---
 
-  - Design Responsivo: O aplicativo funciona perfeitamente em dispositivos móveis.
-  - Interatividade Simples: Clique em um ícone para concluir ou excluir tarefas.
+## 🧩 API (Resumo dos Endpoints)
 
-## 📝 Melhorias Futuras
+- POST api/login.php — body: user → cria sessão e arquivo do usuário.
+- POST api/logout.php — encerra sessão.
+- GET api/whoami.php — retorna usuário logado.
+- GET api/list.php?view=all|mine&sort=time|created — lista tarefas.
+- POST api/add.php — body: text, time (opcional HH:MM) → cria tarefa.
+- POST api/toggle.php — body: id → alterna concluída (somente do dono).
+- POST api/delete.php — body: id → remove (somente do dono).
+- POST api/create_table.php — garante o arquivo do usuário.
 
-  - Adicionar funcionalidade de edição de tarefas.
-  - Implementar filtros (exibir todas, concluídas, pendentes).
-  - Exportar tarefas como arquivo.
+**Formato do item:**
+
+      {
+        "id": "t_...",
+        "text": "string",
+        "done": false,
+        "owner": "usuario",
+        "created": 1690000000,
+        "time": "HH:MM"
+      }
+
+---
+
+## 🖥️ Uso
+
+- Abra o site → informe um nome de usuário (sem senha) → Entrar.
+- Adicione tarefas; opcionalmente preencha o horário (HH:MM).
+- Use o botão “Ordenar: Hora/Criação” para alternar a ordenação.
+- Em “Todos” você vê as tarefas de todo mundo; só o dono pode alterar/excluir.
+
+---
+
+🌟 Roadmap / Melhorias Futuras
+
+- Editar tarefa (inline).
+- Filtros (todas | concluídas | pendentes).
+- Exportar/Importar tarefas.
+- Autenticação real (login com senha) e perfis.
+
+---
 
 ## 🧑‍💻 Contribuição
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar um **pull request**.
+Contribuições são bem-vindas! Abra uma issue ou envie um **pull request**.
+
+---
 
 ## 📄 Licença
 
 Este projeto é de uso livre e está disponível sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
 
+---
 
 Feito com ❤️ por Alex Santos.
 
 --- 
 
 Caso deseje adicionar mais detalhes ou customizações, é só avisar! 😊
+
+---
